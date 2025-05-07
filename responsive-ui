@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(const MYAPP());
+}
+class MYAPP extends StatelessWidget{
+  const MYAPP({super.key});
+  @override
+  Widget build(BuildContext x){
+    return MaterialApp(
+        title:'Responsive UI',
+      home: const Responsive(),
+
+    );
+  }
+
+}
+class Responsive extends StatelessWidget {
+  const Responsive({super.key});
+
+  Widget build(BuildContext x) {
+    double screenWidth = MediaQuery.of(x).size.width;
+    if (screenWidth <= 600) {
+      return const Mobile();
+    } else if (screenWidth > 600 && screenWidth <= 1200) {
+      return const Tablet();
+    } else {
+      return const Desktop();
+    }
+  }
+}
+class Mobile extends StatelessWidget{
+  const Mobile({super.key});
+  @override
+  Widget build(BuildContext m){
+    return Scaffold(
+      appBar:AppBar(title:Text("MOBILE")),
+      body:Center(child: Text("MOBILE VIEW")),
+    );
+  }
+}
+class Tablet extends StatelessWidget{
+  const Tablet({super.key});
+  @override
+  Widget build(BuildContext t){
+    return Scaffold(
+      appBar:AppBar(title:Text("TABLET")),
+      body:Center(child: Text("TABLET VIEW")),
+    );
+  }
+}
+class Desktop extends StatelessWidget{
+  const Desktop({super.key});
+  @override
+  Widget build(BuildContext d){
+    return Scaffold(
+      appBar:AppBar(title:Text("DESKTOP")),
+      body:Center(child: Text("DESKTOP VIEW")),
+    );
+  }
+}
